@@ -11,7 +11,7 @@ public class EmployeePayrollService {
 	}
 
 	static Scanner sc;
-	List<Employee> employeeList;
+	static List<Employee> employeeList;
 	IOStream ioStream;
 
 	public EmployeePayrollService(IOStream ioStream) {
@@ -37,7 +37,7 @@ public class EmployeePayrollService {
 					break;
 				case 2:
 					System.out.println("<-----------------Show Employees----------------->");
-					service.writeEmployeePayrollData();
+					service.writeEmployeePayrollData(employeeList);
 					break;
 				case 3:
 					exit = true;
@@ -66,14 +66,26 @@ public class EmployeePayrollService {
 		}
 	}
 
-	public void writeEmployeePayrollData() {
-		if (employeeList.isEmpty()) {
+	public void writeEmployeePayrollData(List<Employee> list) {
+		if (list.isEmpty()) {
 			System.out.println("No records found.!!!");
 		} else {
-			for (Employee employee : employeeList) {
+			for (Employee employee : list) {
 				System.out.println(employee);
 			}
 		}
+	}
+
+	public List<Employee> printList() {
+		if (employeeList.isEmpty()) {
+			//System.out.println("No records found.!!!");
+		} else {
+			for (Employee e : employeeList) {
+				System.out.println(e);
+			}
+		}
+		return employeeList;
+
 	}
 
 }

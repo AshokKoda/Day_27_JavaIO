@@ -1,21 +1,10 @@
-package com.bridgelabz.employeePayrollService;
+package com.bridgelabz.EmpPayrollStoreInFile;
 
-public class Employee {
+public class Payroll {
 
 	int id;
 	String name;
 	double salary;
-
-	public Employee() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Employee(int id, String name, double salary) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
-	}
 
 	public int getId() {
 		return id;
@@ -43,7 +32,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+		return "Payroll [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 	}
 
 }
