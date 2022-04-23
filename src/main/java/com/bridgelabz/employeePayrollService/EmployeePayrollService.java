@@ -1,5 +1,9 @@
 package com.bridgelabz.employeePayrollService;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -77,15 +81,22 @@ public class EmployeePayrollService {
 	}
 
 	public List<Employee> printList() {
-		if (employeeList.isEmpty()) {
-			//System.out.println("No records found.!!!");
-		} else {
-			for (Employee e : employeeList) {
-				System.out.println(e);
-			}
+		for (Employee e : employeeList) {
+			System.out.println(e);
 		}
 		return employeeList;
 
+	}
+
+	public int countEntries() {
+		String path = "D:/Eclipse_LFP_112/Day_27_JavaFileIO/AllFiles/Payroll.txt";
+		int count = 0;
+		try {
+			count = (int) Files.lines(Paths.get(path)).count();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

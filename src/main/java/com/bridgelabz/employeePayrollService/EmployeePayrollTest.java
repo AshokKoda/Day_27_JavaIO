@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import com.bridgelabz.employeePayrollService.Employee;
 import com.bridgelabz.employeePayrollService.EmployeePayrollService.IOStream;
 
 public class EmployeePayrollTest {
@@ -21,5 +20,13 @@ public class EmployeePayrollTest {
 		EmployeePayrollService service = new EmployeePayrollService(IOStream.FILE_IO);
 		service.writeEmployeePayrollData(Arrays.asList(emps));
 		service.printList();
+		
+	}
+	
+	@Test
+	public void noofLinesInFile() {
+		EmployeePayrollService service = new EmployeePayrollService(IOStream.FILE_IO);
+		int count = service.countEntries();
+		System.out.println("Number of entries in Payroll.txt file : " + count);
 	}
 }
