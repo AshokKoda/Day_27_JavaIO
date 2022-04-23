@@ -37,6 +37,10 @@ public class JavaIOPrograms {
 			System.out.println(file.getName());
 		}
 
+		System.out.println("----------Total Files Count----------");
+		int count = countFilesInDirectory(directoryPath);
+		System.out.println("Total Files: " + count);
+
 		System.out.println("\n<------------Show Text Files------------>");
 		File[] txtFiles = directoryPath.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
@@ -84,6 +88,19 @@ public class JavaIOPrograms {
 		} else {
 			System.out.println("Directory name is already existed.!!!");
 		}
+	}
+
+	public int countFilesInDirectory(File directory) { // UC3
+		int count = 0;
+		for (File file : directory.listFiles()) {
+			if (file.isFile()) {
+				count++;
+			}
+			if (file.isDirectory()) {
+				count += countFilesInDirectory(file);
+			}
+		}
+		return count;
 	}
 
 	public static void main(String[] args) {
