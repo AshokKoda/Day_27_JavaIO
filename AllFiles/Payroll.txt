@@ -1,5 +1,0 @@
-[Payroll [id=465, name=Monday, salary=125634.0]]
-[Payroll [id=582, name=fgggd, salary=1.23132123E8]]
-[Payroll [id=553, name=Wed, salary=15000.0]]
-[Payroll [id=401, name=POOO, salary=18000.0]]
-[Payroll [id=301, name=Sunday, salary=45000.0]]

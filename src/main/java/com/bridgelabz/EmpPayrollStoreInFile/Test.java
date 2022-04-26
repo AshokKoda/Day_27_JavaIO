@@ -10,22 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.bridgelabz.EmpPayrollStoreInFile.Test.JsonFiles;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class EmployeePayrollService {
+public class Test {
 
 	static Scanner sc;
 	static String path = "D:/Eclipse_LFP_112/Day_27_JavaFileIO/AllFiles/Payroll.json";
-	List<Payroll> payrollList;
+	List<Payroll> payrollList = new ArrayList<>();
 
-	enum IOStream {
-		Text_File_Name(path);
+	enum JsonFiles {
+		Json_File_Name(path);
 
 		final String fileName;
 
-		private IOStream(String fileName) {
+		private JsonFiles(String fileName) {
 			this.fileName = fileName;
 		}
 
@@ -34,20 +33,16 @@ public class EmployeePayrollService {
 		}
 	}
 
-	public EmployeePayrollService(IOStream ioStream) {
-		payrollList = new ArrayList<Payroll>();
-	}
-
-	public void createFileAndAddEmployeeService() {
-		EmployeePayrollService service = new EmployeePayrollService(IOStream.Text_File_Name);
-		File file = new File(IOStream.Text_File_Name.getConstant());
+	public void createJsonFile() {
+		Test test = new Test();
+		File file = new File(JsonFiles.Json_File_Name.getConstant());
 		try {
 			if (file.createNewFile()) {
-				System.out.println("New file is added successfully!!!");
-				service.addEmployees();
+				System.out.println("Json file is created successfully!!!");
+				test.addEmployees();
 			} else {
-				System.out.println("Data is adding an existing file...");
-				service.addEmployees();
+				System.out.println("Data is adding an existing json file...");
+				test.addEmployees();
 			}
 			System.out.println("JSON Data Read: ");
 			readJsonFile();
@@ -55,7 +50,7 @@ public class EmployeePayrollService {
 			e.getMessage();
 		}
 	}
-	
+
 	public void addEmployees() {
 		System.out.println("---------------------Add Employee--------------------");
 		sc = new Scanner(System.in);
@@ -102,28 +97,28 @@ public class EmployeePayrollService {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("***************** Employee Payroll Service *****************");
-		EmployeePayrollService service = new EmployeePayrollService(IOStream.Text_File_Name);
-
 		boolean exit = false;
+		Test test = new Test();
+		sc = new Scanner(System.in);
 		while (!exit) {
-			System.out.println("<------------------------------------------------------->");
-			System.out.println("1. Add Employee \t0. Exit");
-			System.out.println("<-----------------Choose your options----------------->");
-			sc = new Scanner(System.in);
+			System.out.println("--------------------Select Menu----------------------");
+			System.out.println("1.Add \t0.Exit");
+			System.out.println("-------------Enter option-----------------");
 			int option = sc.nextInt();
-			System.out.println("<------------------------------------------------------->");
+
 			switch (option) {
 			case 1:
-				service.createFileAndAddEmployeeService();
+				test.createJsonFile();
 				break;
 			case 0:
 				exit = true;
-				System.out.println("***************Thank you***************");
+				System.out.println("--------Thank you--------------");
 				break;
 			default:
-				System.out.println("Invalid option.Please try again.!!!");
+				System.out.println("Invali option...");
 			}
 		}
+
 	}
+
 }
